@@ -15,6 +15,10 @@ public class City {
     @Column(name = "Name", nullable = false, length = 35)
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "CountryCode", referencedColumnName = "Code")
+    private Country country;
+
     @ColumnDefault("''")
     @Column(name = "District", nullable = false, length = 20)
     private String district;
@@ -22,6 +26,8 @@ public class City {
     @ColumnDefault("0")
     @Column(name = "Population", nullable = false)
     private Integer population;
+
+
 
     public Integer getId() {
         return id;
@@ -55,4 +61,11 @@ public class City {
         this.population = population;
     }
 
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 }
